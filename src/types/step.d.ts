@@ -175,6 +175,16 @@ declare namespace Step {
     modalOverlayOpeningRadius?: number;
 
     /**
+     * An amount to offset the modal overlay opening in the x-direction
+     */
+    modalOverlayOpeningXOffset?: number;
+
+    /**
+     * An amount to offset the modal overlay opening in the y-direction
+     */
+    modalOverlayOpeningYOffset?: number;
+
+    /**
      * Extra [options to pass to Popper]{@link https://popper.js.org/docs/v2/}
      */
     popperOptions?: object;

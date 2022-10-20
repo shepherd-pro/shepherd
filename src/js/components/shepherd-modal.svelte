@@ -38,12 +38,16 @@
    * Uses the bounds of the element we want the opening overtop of to set the dimensions of the opening and position it
    * @param {Number} modalOverlayOpeningPadding An amount of padding to add around the modal overlay opening
    * @param {Number} modalOverlayOpeningRadius An amount of border radius to add around the modal overlay opening
+   * @param {Number} modalOverlayOpeningXOffset An amount to offset the modal overlay opening in the x-direction
+   * @param {Number} modalOverlayOpeningYOffset An amount to offset the modal overlay opening in the y-direction
    * @param {HTMLElement} scrollParent The scrollable parent of the target element
    * @param {HTMLElement} targetElement The element the opening will expose
    */
   export function positionModal(
     modalOverlayOpeningPadding = 0,
     modalOverlayOpeningRadius = 0,
+    modalOverlayOpeningXOffset = 0,
+    modalOverlayOpeningYOffset = 0,
     scrollParent,
     targetElement
   ) {
@@ -55,8 +59,8 @@
       openingProperties = {
         width: width + modalOverlayOpeningPadding * 2,
         height: height + modalOverlayOpeningPadding * 2,
-        x: (x || left) - modalOverlayOpeningPadding,
-        y: y - modalOverlayOpeningPadding,
+        x: (x || left) + modalOverlayOpeningXOffset - modalOverlayOpeningPadding,
+        y: y + modalOverlayOpeningYOffset - modalOverlayOpeningPadding,
         r: modalOverlayOpeningRadius
       };
     } else {
@@ -129,7 +133,9 @@
   function _styleForStep(step) {
     const {
       modalOverlayOpeningPadding,
-      modalOverlayOpeningRadius
+      modalOverlayOpeningRadius,
+      modalOverlayOpeningXOffset,
+      modalOverlayOpeningYOffset
     } = step.options;
 
     const scrollParent = _getScrollParent(step.target);
@@ -140,6 +146,8 @@
       positionModal(
         modalOverlayOpeningPadding,
         modalOverlayOpeningRadius,
+        modalOverlayOpeningXOffset,
+        modalOverlayOpeningYOffset,
         scrollParent,
         step.target
       );

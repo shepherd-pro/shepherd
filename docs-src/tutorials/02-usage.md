@@ -221,6 +221,8 @@ You can also always manually advance the Tour by calling `myTour.next()`.
 - `id`: The string to use as the `id` for the step. If an id is not passed one will be generated.
 - `modalOverlayOpeningPadding`: An amount of padding to add around the modal overlay opening
 - `modalOverlayOpeningRadius`: An amount of border radius to add around the modal overlay opening
+- `modalOverlayOpeningXOffset`: An amount to offset the modal overlay opening in the x-direction
+- `modalOverlayOpeningYOffset`: An amount to offset the modal overlay opening in the y-direction
 - `popperOptions`: Extra options to pass to [Popper](https://popper.js.org/docs/v2/constructors/#options)
 - `showOn`: A function that, when it returns true, will show the step. If it returns false, the step will be skipped.
 - `scrollTo`: Should the element be scrolled to when this step is shown? If true, uses the default `scrollIntoView`, if an object, passes that object as the params to `scrollIntoView` i.e. `{behavior: 'smooth', block: 'center'}`
