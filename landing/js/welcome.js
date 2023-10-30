@@ -180,13 +180,14 @@
     return shepherd;
   }
 
-  function ready() {
-    if (document.attachEvent ? document.readyState === 'complete' : document.readyState !== 'loading') {
-      init();
-    } else {
-      document.addEventListener('DOMContentLoaded', init);
-    }
+// Wait for the DOM to be ready before calling init()
+function ready() {
+  if (document.readyState !== 'loading') {
+    init();
+  } else {
+    document.addEventListener('DOMContentLoaded', init);
   }
+}
 
   ready();
 }).call(void 0);
