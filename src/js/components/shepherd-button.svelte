@@ -15,12 +15,23 @@
 
   function getConfigOption(option) {
     if (isFunction(option)) {
-      return option = option.call(step);
+      return (option = option.call(step));
     }
     return option;
   }
-
 </script>
+
+<button
+  aria-label={label ? label : null}
+  class={`${classes || ''} shepherd-button ${
+    secondary ? 'shepherd-button-secondary' : ''
+  }`}
+  {disabled}
+  on:click={action}
+  tabindex="0"
+>
+  {@html text}
+</button>
 
 <style global>
   .shepherd-button {
@@ -53,13 +64,3 @@
     cursor: not-allowed;
   }
 </style>
-
-<button
-  aria-label="{label ? label : null}"
-  class="{`${(classes || '')} shepherd-button ${(secondary ? 'shepherd-button-secondary' : '')}`}"
-  disabled={disabled}
-  on:click={action}
-  tabindex="0"
->
-    {@html text}
-</button>

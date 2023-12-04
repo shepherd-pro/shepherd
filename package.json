@@ -83,6 +83,7 @@
     "postcss": "^8.4.32",
     "postinstall-postinstall": "^2.1.0",
     "prettier": "^3.1.0",
+    "prettier-plugin-svelte": "^3.1.2",
     "release-it": "^15.11.0",
     "release-it-lerna-changelog": "^5.0.0",
     "replace": "^1.2.2",

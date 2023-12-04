@@ -6,6 +6,14 @@
   $: buttons = step.options.buttons;
 </script>
 
+<footer class="shepherd-footer">
+  {#if buttons}
+    {#each buttons as config}
+      <ShepherdButton {config} {step} />
+    {/each}
+  {/if}
+</footer>
+
 <style global>
   .shepherd-footer {
     border-bottom-left-radius: 5px;
@@ -19,14 +27,3 @@
     margin-right: 0;
   }
 </style>
-
-<footer class="shepherd-footer">
-    {#if buttons}
-        {#each buttons as config}
-          <ShepherdButton
-            {config}
-            {step}
-          />
-        {/each}
-    {/if}
-</footer>

@@ -1,9 +1,9 @@
 'use strict';
 
-(function() {
+(function () {
   function init() {
     var shepherd = setupShepherd();
-    setTimeout(function() {
+    setTimeout(function () {
       shepherd.start();
     }, 400);
   }
@@ -50,7 +50,8 @@
     });
 
     const element = document.createElement('p');
-    element.innerText = 'Including Shepherd is easy! Just include shepherd.js. The styles are bundled with the JS.';
+    element.innerText =
+      'Including Shepherd is easy! Just include shepherd.js. The styles are bundled with the JS.';
 
     // These steps should be added via `addSteps`
     const steps = [
@@ -80,7 +81,9 @@
       },
       {
         title: 'Creating a Shepherd Tour',
-        text: 'Creating a Shepherd tour is easy. too! ' + 'Just create a \`Tour\` instance, and add as many steps as you want.',
+        text:
+          'Creating a Shepherd tour is easy. too! ' +
+          'Just create a `Tour` instance, and add as many steps as you want.',
         attachTo: {
           element: '.hero-example',
           on: 'right'
@@ -125,6 +128,31 @@
           }
         ],
         id: 'attaching'
+      },
+      {
+        title: 'Highliting multiple Elements',
+        text: 'Your tour steps can highlight multiple elements (like this step).',
+        attachTo: {
+          element: '.hero-multiple-select',
+          on: 'bottom',
+          multiple: true
+        },
+        buttons: [
+          {
+            action: function () {
+              return this.back();
+            },
+            secondary: true,
+            text: 'Back'
+          },
+          {
+            action: function () {
+              return this.next();
+            },
+            text: 'Next'
+          }
+        ],
+        id: 'multiple-select'
       }
     ];
 
@@ -181,7 +209,11 @@
   }
 
   function ready() {
-    if (document.attachEvent ? document.readyState === 'complete' : document.readyState !== 'loading') {
+    if (
+      document.attachEvent
+        ? document.readyState === 'complete'
+        : document.readyState !== 'loading'
+    ) {
       init();
     } else {
       document.addEventListener('DOMContentLoaded', init);
@@ -189,4 +221,4 @@
   }
 
   ready();
-}).call(void 0);
+}.call(void 0));

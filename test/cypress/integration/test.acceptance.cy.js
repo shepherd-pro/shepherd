@@ -46,7 +46,7 @@ describe('Shepherd Acceptance Tests', () => {
           .contains('Shepherd is a JavaScript library').should('be.visible');
 
         cy.document().then((document) => {
-          assert.deepEqual(document.querySelector('[data-test-hero-welcome]'), tour.getCurrentStep().target, 'hero welcome is the target');
+          assert.deepEqual([document.querySelector('[data-test-hero-welcome]')], tour.getCurrentStep().target, 'hero welcome is the target');
         });
       });
 
@@ -76,7 +76,7 @@ describe('Shepherd Acceptance Tests', () => {
           // Step text should be visible
           cy.get('.shepherd-text')
             .contains('Including Shepherd is easy!').should('be.visible');
-          assert.deepEqual(heroIncludingElement, tour.getCurrentStep().target, 'heroIncludingElement is the target');
+          assert.deepEqual([heroIncludingElement], tour.getCurrentStep().target, 'heroIncludingElement is the target');
         });
       });
 
@@ -104,7 +104,7 @@ describe('Shepherd Acceptance Tests', () => {
           cy.get('.shepherd-text')
             .contains('You may provide function returning DOM node references.').should('be.visible');
           assert.deepEqual(
-            document.querySelector('[data-test-hero-including]'),
+            [document.querySelector('[data-test-hero-including]')],
             tour.getCurrentStep().target,
             'heroIncludingElement is the target'
           );
@@ -135,7 +135,7 @@ describe('Shepherd Acceptance Tests', () => {
           cy.get('.shepherd-text')
             .contains('You may provide functions returning selectors.').should('be.visible');
           assert.deepEqual(
-            document.querySelector('[data-test-hero-including]'),
+            [document.querySelector('[data-test-hero-including]')],
             tour.getCurrentStep().target,
             'heroIncludingElement is the target'
           );
@@ -284,7 +284,7 @@ describe('Shepherd Acceptance Tests', () => {
             .then(() => {
               cy.get('[data-shepherd-step-id="bar"] .shepherd-text').contains('bar').should('be.visible');
               assert.deepEqual(
-                document.querySelector('#bar'),
+                [document.querySelector('#bar')],
                 tour.getCurrentStep().target,
                 '#bar is the target'
               );
@@ -297,7 +297,7 @@ describe('Shepherd Acceptance Tests', () => {
             .then(() => {
               cy.get('[data-shepherd-step-id="baz"] .shepherd-text').contains('baz').should('be.visible');
               assert.deepEqual(
-                document.querySelector('#baz'),
+                [document.querySelector('#baz')],
                 tour.getCurrentStep().target,
                 '#baz is the target'
               )
@@ -356,12 +356,46 @@ describe('Shepherd Acceptance Tests', () => {
           cy.get('[data-shepherd-step-id="lazyStep"] .shepherd-text')
             .contains('Lazy target evaluation works too!').should('be.visible');
           assert.deepEqual(
-            document.querySelector('#lazyTarget'),
+            [document.querySelector('#lazyTarget')],
             tour.getCurrentStep().target,
             '#dummyTarget is the target'
           );
         });
-      });   
+      });
+    
+    it('correctly selects multiple elements', () => {
+        cy.document().then((document) => {
+          const steps = () => {
+            return [
+              {
+                text: 'Multiple selection works too!',
+                attachTo: {
+                  element: '.hero-multiple div',
+                  on: 'bottom',
+          multiple: true
+                },
+                id: 'multipleStep'
+              }
+            ];
+          };
+
+          const tour = setupTour(Shepherd, {
+            cancelIcon: {
+              enabled: false
+            }
+          }, steps);
+
+          tour.start();
+
+          cy.get('[data-shepherd-step-id="multipleStep"] .shepherd-text')
+            .contains('Multiple selection works too!').should('be.visible');
+          assert.deepEqual(
+            [...document.querySelectorAll('.hero-multiple div')],
+            tour.getCurrentStep().target,
+            '#multiple-targets are in the target'
+          );
+        });
+      }); 
     });
 
     describe('buttons', () => {

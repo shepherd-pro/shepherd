@@ -10,7 +10,7 @@ declare class Tour extends Evented {
    * @param options The options for the tour
    * @returns The newly created Tour instance
    */
-  constructor(options?: Tour.TourOptions);//TODO superheri Note: Return on constructor is not possible in typescript. Could this be possible to make this the same for the constructor of the Step class?
+  constructor(options?: Tour.TourOptions); //TODO superheri Note: Return on constructor is not possible in typescript. Could this be possible to make this the same for the constructor of the Step class?
 
   /**
    * Adds a new step to the tour
@@ -135,12 +135,12 @@ declare namespace Tour {
     /**
      * An optional container element for the steps. If not set, the steps will be appended to document.body.
      */
-    stepsContainer?: HTMLElement,
+    stepsContainer?: HTMLElement;
 
     /**
      * An optional container element for the modal. If not set, the modal will be appended to document.body.
      */
-    modalContainer?: HTMLElement,
+    modalContainer?: HTMLElement;
 
     /**
      * An array of step options objects or Step instances to initialize the tour with

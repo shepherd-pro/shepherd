@@ -16,9 +16,10 @@ export function normalizePrefix(prefix) {
 /**
  * Resolves attachTo options, converting element option value to a qualified HTMLElement.
  * @param {Step} step The step instance
- * @returns {{}|{element, on}}
+ * @returns {{}|{element, on, multiple}}
  * `element` is a qualified HTML Element
  * `on` is a string position value
+ * `multiple` is flag to highlight multiple elements
  */
 export function parseAttachTo(step) {
   const options = step.options.attachTo || {};
@@ -28,20 +29,29 @@ export function parseAttachTo(step) {
     // Bind the callback to step so that it has access to the object, to enable running additional logic
     returnOpts.element = returnOpts.element.call(step);
   }
-
   if (isString(returnOpts.element)) {
     // Can't override the element in user opts reference because we can't
     // guarantee that the element will exist in the future.
     try {
-      returnOpts.element = document.querySelector(returnOpts.element);
+      returnOpts.element = [...document.querySelectorAll(returnOpts.element)];
     } catch (e) {
       // TODO
     }
-    if (!returnOpts.element) {
+    if (!returnOpts.element || !returnOpts.element.length) {
+      returnOpts.element = null;
+
       console.error(
         `The element for this Shepherd step was not found ${options.element}`
       );
     }
+  }
+
+  if (returnOpts.element && !Array.isArray(returnOpts.element)) {
+    returnOpts.element = [returnOpts.element];
+  }
+
+  if (!options.multiple && Array.isArray(returnOpts.element)) {
+    returnOpts.element = returnOpts.element[0] && [returnOpts.element[0]];
   }
 
   return returnOpts;

@@ -16,10 +16,7 @@
 
   export function closeModalOpening() {
     openingProperties = {
-      width: 0,
-      height: 0,
-      x: 0,
-      y: 0,
+      elements: [],
       r: 0
     };
   }
@@ -39,24 +36,30 @@
    * @param {Number} modalOverlayOpeningPadding An amount of padding to add around the modal overlay opening
    * @param {Number | { topLeft: Number, bottomLeft: Number, bottomRight: Number, topRight: Number }} modalOverlayOpeningRadius An amount of border radius to add around the modal overlay opening
    * @param {HTMLElement} scrollParent The scrollable parent of the target element
-   * @param {HTMLElement} targetElement The element the opening will expose
+   * @param {HTMLElement[]} targetElements Elements the opening will expose
    */
   export function positionModal(
     modalOverlayOpeningPadding = 0,
     modalOverlayOpeningRadius = 0,
     scrollParent,
-    targetElement
+    targetElements
   ) {
-    if (targetElement) {
-      const { y, height } = _getVisibleHeight(targetElement, scrollParent);
-      const { x, width, left } = targetElement.getBoundingClientRect();
+    if (targetElements) {
+      const elements = [];
+      targetElements.forEach((el) => {
+        const { y, height } = _getVisibleHeight(el, scrollParent);
+        const { x, width, left } = el.getBoundingClientRect();
 
-      // getBoundingClientRect is not consistent. Some browsers use x and y, while others use left and top
+        // getBoundingClientRect is not consistent. Some browsers use x and y, while others use left and top
+        elements.push({
+          width: width + modalOverlayOpeningPadding * 2,
+          height: height + modalOverlayOpeningPadding * 2,
+          x: (x || left) - modalOverlayOpeningPadding,
+          y: y - modalOverlayOpeningPadding
+        });
+      });
       openingProperties = {
-        width: width + modalOverlayOpeningPadding * 2,
-        height: height + modalOverlayOpeningPadding * 2,
-        x: (x || left) - modalOverlayOpeningPadding,
-        y: y - modalOverlayOpeningPadding,
+        elements,
         r: modalOverlayOpeningRadius
       };
     } else {
@@ -127,10 +130,8 @@
    * @private
    */
   function _styleForStep(step) {
-    const {
-      modalOverlayOpeningPadding,
-      modalOverlayOpeningRadius
-    } = step.options;
+    const { modalOverlayOpeningPadding, modalOverlayOpeningRadius } =
+      step.options;
 
     const scrollParent = _getScrollParent(step.target);
 

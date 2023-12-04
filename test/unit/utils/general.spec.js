@@ -8,7 +8,7 @@ import {
   getFloatingUIOptions
 } from '../../../src/js/utils/floating-ui.js';
 
-describe('General Utils', function() {
+describe('General Utils', function () {
   let optionsElement;
 
   beforeEach(() => {
@@ -21,8 +21,8 @@ describe('General Utils', function() {
     document.body.removeChild(optionsElement);
   });
 
-  describe('parseAttachTo()', function() {
-    it('fails if element does not exist', function() {
+  describe('parseAttachTo()', function () {
+    it('fails if element does not exist', function () {
       const step = new Step({}, {
         attachTo: { element: '.element-does-not-exist', on: 'center' }
       });
@@ -31,7 +31,7 @@ describe('General Utils', function() {
       expect(element).toBeFalsy();
     });
 
-    it('accepts callback function as element', function() {
+    it('accepts callback function as element', function () {
       const callback = spy();
 
       const step = new Step({}, {
@@ -42,16 +42,16 @@ describe('General Utils', function() {
       expect(callback.called).toBe(true);
     });
 
-    it('correctly resolves elements when given function that returns a selector', function() {
+    it('correctly resolves elements when given function that returns a selector', function () {
       const step = new Step({}, {
         attachTo: { element: () => 'body', on: 'center' }
       });
 
       const { element } = parseAttachTo(step);
-      expect(element).toBe(document.body);
+      expect(element[0]).toBe(document.body);
     });
 
-    it('binds element callback to step', function() {
+    it('binds element callback to step', function () {
       const step = new Step({}, {
         attachTo: {
           element() {
@@ -62,6 +62,32 @@ describe('General Utils', function() {
       });
 
       parseAttachTo(step);
+    });
+
+    it('returns all selected elements if multiple flag enabled', function () {
+      const elements = [];
+      const addNode = () => {
+        const el = document.createElement('div');
+        el.className = 'multiple-item';
+        document.body.appendChild(el);
+        return el;
+      };
+
+      elements.push(addNode());
+      elements.push(addNode());
+
+      const step = new Step({}, {
+        attachTo: {
+          element: '.multiple-item',
+          on: 'center',
+          multiple: true
+        }
+      });
+
+      const { element } = parseAttachTo(step);
+      elements.forEach((el, index) => {
+        expect(element[index]).toBe(el);
+      })
     });
   });
 
@@ -85,7 +111,7 @@ describe('General Utils', function() {
       expect(floatingUIOptions.middleware[0].options.altAxis).toBe(false);
     });
 
-    it('positioning strategy is explicitly set', function() {
+    it('positioning strategy is explicitly set', function () {
       const step = new Step({}, {
         attachTo: { element: '.options-test', on: 'center' },
         options: {
@@ -124,7 +150,7 @@ describe('General Utils', function() {
     })
 
     it('Returns true when element property is null', () => {
-      const elementAttachTo = { element: null}; // FAILS
+      const elementAttachTo = { element: null }; // FAILS
 
       expect(shouldCenterStep(elementAttachTo)).toBe(true)
     })

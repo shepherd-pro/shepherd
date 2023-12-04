@@ -8,13 +8,23 @@
   const LEFT_ARROW = 37;
   const RIGHT_ARROW = 39;
 
-  export let classPrefix, element, descriptionId, firstFocusableElement,
-    focusableElements, labelId, lastFocusableElement, step, dataStepId;
+  export let classPrefix,
+    element,
+    descriptionId,
+    firstFocusableElement,
+    focusableElements,
+    labelId,
+    lastFocusableElement,
+    step,
+    dataStepId;
 
   let hasCancelIcon, hasTitle, classes;
 
   $: {
-    hasCancelIcon = step.options && step.options.cancelIcon && step.options.cancelIcon.enabled;
+    hasCancelIcon =
+      step.options &&
+      step.options.cancelIcon &&
+      step.options.cancelIcon.enabled;
     hasTitle = step.options && step.options.title;
   }
 
@@ -23,21 +33,23 @@
   onMount(() => {
     // Get all elements that are focusable
     dataStepId = { [`data-${classPrefix}shepherd-step-id`]: step.id };
-    focusableElements = element.querySelectorAll('a[href], area[href], input:not([disabled]), select:not([disabled]), textarea:not([disabled]), button:not([disabled]), [tabindex="0"]');
+    focusableElements = element.querySelectorAll(
+      'a[href], area[href], input:not([disabled]), select:not([disabled]), textarea:not([disabled]), button:not([disabled]), [tabindex="0"]'
+    );
     firstFocusableElement = focusableElements[0];
     lastFocusableElement = focusableElements[focusableElements.length - 1];
   });
 
   afterUpdate(() => {
-    if(classes !== step.options.classes) {
+    if (classes !== step.options.classes) {
       updateDynamicClasses();
     }
   });
 
   function updateDynamicClasses() {
-      removeClasses(classes);
-      classes = step.options.classes;
-      addClasses(classes);
+    removeClasses(classes);
+    classes = step.options.classes;
+    addClasses(classes);
   }
 
   function removeClasses(classes) {
@@ -50,7 +62,7 @@
   }
 
   function addClasses(classes) {
-    if(isString(classes)) {
+    if (isString(classes)) {
       const newClasses = getClassesArray(classes);
       if (newClasses.length) {
         element.classList.add(...newClasses);
@@ -59,7 +71,7 @@
   }
 
   function getClassesArray(classes) {
-     return classes.split(' ').filter(className => !!className.length);
+    return classes.split(' ').filter((className) => !!className.length);
   }
 
   /**
@@ -79,7 +91,10 @@
         }
         // Backward tab
         if (e.shiftKey) {
-          if (document.activeElement === firstFocusableElement || document.activeElement.classList.contains('shepherd-element')) {
+          if (
+            document.activeElement === firstFocusableElement ||
+            document.activeElement.classList.contains('shepherd-element')
+          ) {
             e.preventDefault();
             lastFocusableElement.focus();
           }
@@ -114,6 +129,24 @@
   };
 </script>
 
+<div
+  aria-describedby={!isUndefined(step.options.text) ? descriptionId : null}
+  aria-labelledby={step.options.title ? labelId : null}
+  bind:this={element}
+  class:shepherd-has-cancel-icon={hasCancelIcon}
+  class:shepherd-has-title={hasTitle}
+  class:shepherd-element={true}
+  {...dataStepId}
+  on:keydown={handleKeyDown}
+  role="dialog"
+  tabindex="0"
+>
+  {#if step.options.arrow && step.options.attachTo && step.options.attachTo.element && step.options.attachTo.on}
+    <div class="shepherd-arrow" data-popper-arrow />
+  {/if}
+  <ShepherdContent {descriptionId} {labelId} {step} />
+</div>
+
 <style global>
   .shepherd-element {
     background: #fff;
@@ -139,7 +172,8 @@
     visibility: hidden;
   }
 
-  .shepherd-element, .shepherd-element *,
+  .shepherd-element,
+  .shepherd-element *,
   .shepherd-element *:after,
   .shepherd-element *:before {
     box-sizing: border-box;
@@ -156,7 +190,7 @@
   .shepherd-arrow:before {
     content: '';
     transform: rotate(45deg);
-    background: #fff  ;
+    background: #fff;
   }
 
   .shepherd-element[data-popper-placement^='top'] > .shepherd-arrow {
@@ -179,11 +213,11 @@
     opacity: 0;
   }
 
-
   /**
   * Arrow on top of tooltip centered horizontally, with title color
   */
-  .shepherd-element.shepherd-has-title[data-popper-placement^='bottom'] > .shepherd-arrow::before {
+  .shepherd-element.shepherd-has-title[data-popper-placement^='bottom']
+    > .shepherd-arrow::before {
     background-color: #e6e6e6;
   }
 
@@ -192,25 +226,3 @@
     pointer-events: none;
   }
 </style>
-
-<div
-  aria-describedby={!isUndefined(step.options.text) ? descriptionId : null}
-  aria-labelledby={step.options.title ? labelId : null}
-  bind:this={element}
-  class:shepherd-has-cancel-icon="{hasCancelIcon}"
-  class:shepherd-has-title="{hasTitle}"
-  class:shepherd-element="{true}"
-  {...dataStepId}
-  on:keydown={handleKeyDown}
-  role="dialog"
-  tabindex="0"
->
-    {#if step.options.arrow && step.options.attachTo && step.options.attachTo.element && step.options.attachTo.on}
-      <div class="shepherd-arrow" data-popper-arrow></div>
-    {/if}
-  <ShepherdContent
-    {descriptionId}
-    {labelId}
-    {step}
-  />
-</div>

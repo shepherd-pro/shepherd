@@ -67,6 +67,18 @@ body {
   text-align: center;
 }
 
+.hero-multiple {
+	display: flex;
+	justify-content: space-between;
+}
+
+.hero-multiple div {
+	display: block;
+	width: 30%;
+	height: 100px;
+	text-align: center;
+}
+
 .demo-heading {
   color: #00213B;
 }

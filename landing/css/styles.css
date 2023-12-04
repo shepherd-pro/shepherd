@@ -2,8 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 
-html, body {
-  font-family: "Pier Sans", "proxima-nova", "Helvetica Neue", sans-serif;
+html,
+body {
+  font-family: 'Pier Sans', 'proxima-nova', 'Helvetica Neue', sans-serif;
 }
 
 body {
@@ -39,7 +40,7 @@ a {
 }
 
 .button:hover {
-  background: #F3F5F5;
+  background: #f3f5f5;
   transform: translateX(10px) translateY(-10px);
 }
 
@@ -80,12 +81,12 @@ a {
 }
 
 .footer-icon path {
-  fill: #16202D;
+  fill: #16202d;
   transition: 0.25s ease-in-out;
 }
 
 .footer-icon:hover path {
-  fill: #959FAC;
+  fill: #959fac;
 }
 
 .footer-logo {
@@ -104,12 +105,12 @@ pre {
 
 .shepherd-button {
   background: #ffffff;
-  border-top: solid 4px #16202D;
+  border-top: solid 4px #16202d;
   border-radius: 0;
-  color: #16202D;
+  color: #16202d;
   display: flex;
   flex-grow: 1;
-  font-family: "GT Pressura", sans-serif;
+  font-family: 'GT Pressura', sans-serif;
   font-size: 1rem;
   justify-content: center;
   margin: 0;
@@ -119,25 +120,25 @@ pre {
 }
 
 .shepherd-button:hover {
-  background: #16202D;
+  background: #16202d;
   color: #ffffff;
 }
 
 .shepherd-button.shepherd-button-secondary {
-  background: #CAD5D5;
+  background: #cad5d5;
 }
 
 .shepherd-button.shepherd-button-secondary:hover {
-  color: #CAD5D5;
-  background: #16202D;
+  color: #cad5d5;
+  background: #16202d;
 }
 
 .shepherd-cancel-icon {
-  font-family: "GT Pressura", sans-serif;
+  font-family: 'GT Pressura', sans-serif;
 }
 
 .shepherd-element {
-  border: solid 4px #16202D;
+  border: solid 4px #16202d;
 }
 
 .shepherd-element,
@@ -199,7 +200,7 @@ pre {
 }
 
 .shepherd-footer button:not(:last-of-type) {
-  border-right: solid 4px #16202D;
+  border-right: solid 4px #16202d;
 }
 
 .shepherd-has-title .shepherd-content .shepherd-cancel-icon {
@@ -208,7 +209,7 @@ pre {
 
 .shepherd-has-title .shepherd-content .shepherd-header {
   background: transparent;
-  font-family: "GT Pressura", sans-serif;
+  font-family: 'GT Pressura', sans-serif;
   padding-bottom: 0;
   padding-left: 2rem;
 }
@@ -223,7 +224,8 @@ pre {
   padding: 2rem;
 }
 
-.shepherd-text a, .shepherd-text a:visited,
+.shepherd-text a,
+.shepherd-text a:visited,
 .shepherd-text a:active {
   border-bottom: 1px dotted;
   border-bottom-color: rgba(0, 0, 0, 0.75);
@@ -231,7 +233,8 @@ pre {
   text-decoration: none;
 }
 
-.shepherd-text a:hover, .shepherd-text a:visited:hover,
+.shepherd-text a:hover,
+.shepherd-text a:visited:hover,
 .shepherd-text a:active:hover {
   border-bottom-style: solid;
 }

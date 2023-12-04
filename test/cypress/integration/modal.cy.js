@@ -87,8 +87,9 @@ describe('Modal mode', () => {
 
     it('applying highlight classes to the target element', () => {
       tour.start();
-
-      expect(tour.getCurrentStep().target.classList.contains('highlight')).to.be.true;
+      tour.getCurrentStep().target.forEach(el => {
+        expect(el.classList.contains('highlight')).to.be.true;
+      });
     });
   });
 

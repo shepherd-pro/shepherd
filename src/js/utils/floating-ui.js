@@ -29,25 +29,29 @@ export function setupTooltip(step) {
 
   const attachToOptions = step._getResolvedAttachToOptions();
 
-  let target = attachToOptions.element;
+  let targets = attachToOptions.element;
   const floatingUIOptions = getFloatingUIOptions(attachToOptions, step);
   const shouldCenter = shouldCenterStep(attachToOptions);
 
   if (shouldCenter) {
-    target = document.body;
+    targets = [document.body];
     const content = step.shepherdElementComponent.getElement();
     content.classList.add('shepherd-centered');
   }
 
-  step.cleanup = autoUpdate(target, step.el, () => {
-    // The element might have already been removed by the end of the tour.
-    if (!step.el) {
-      step.cleanup();
-      return;
-    }
+  const cleanup = targets.map((target) =>
+    autoUpdate(target, step.el, () => {
+      // The element might have already been removed by the end of the tour.
+      if (!step.el) {
+        step.cleanup();
+        return;
+      }
 
-    setPosition(target, step, floatingUIOptions, shouldCenter);
-  });
+      setPosition(target, step, floatingUIOptions, shouldCenter);
+    })
+  );
+
+  step.cleanup = (...args) => cleanup.forEach((i) => i(...args));
 
   step.target = attachToOptions.element;
 

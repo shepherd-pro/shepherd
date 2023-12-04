@@ -241,6 +241,7 @@ declare namespace Step {
   interface StepOptionsAttachTo {
     element?: HTMLElement | string | (() => HTMLElement | string | null | undefined);
     on?: PopperPlacement;
+	multiple?: boolean;
   }
 
   interface StepOptionsAdvanceOn {

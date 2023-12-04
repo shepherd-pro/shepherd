@@ -6,10 +6,20 @@
   let title, cancelIcon;
 
   $: {
-      title = step.options.title;
-      cancelIcon = step.options.cancelIcon;
+    title = step.options.title;
+    cancelIcon = step.options.cancelIcon;
   }
 </script>
+
+<header class="shepherd-header">
+  {#if title}
+    <ShepherdTitle {labelId} {title} />
+  {/if}
+
+  {#if cancelIcon && cancelIcon.enabled}
+    <ShepherdCancelIcon {cancelIcon} {step} />
+  {/if}
+</header>
 
 <style global>
   .shepherd-header {
@@ -27,19 +37,3 @@
     padding: 1em;
   }
 </style>
-
-<header class="shepherd-header">
-    {#if title}
-      <ShepherdTitle
-        {labelId}
-        {title}
-      />
-    {/if}
-
-    {#if cancelIcon && cancelIcon.enabled}
-      <ShepherdCancelIcon
-        {cancelIcon}
-        {step}
-      />
-    {/if}
-</header>
