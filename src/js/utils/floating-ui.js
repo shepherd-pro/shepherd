@@ -187,7 +187,9 @@ export function getFloatingUIOptions(attachToOptions, step) {
     );
 
     if (arrowEl) {
-      options.middleware.push(arrow({ element: arrowEl }));
+      const arrowPadding = getPaddingSum(step.options.floatingUIOptions.middleware || []);
+
+      options.middleware.push(arrow({ element: arrowEl, padding: arrowPadding}));
     }
 
     options.placement = attachToOptions.on;
@@ -206,4 +208,27 @@ function addArrow(step) {
   }
 
   return false;
+}
+
+/**
+ *
+ * @param {Object[]} middleware
+ * @returns {number}
+ */
+function getPaddingSum(middleware) {
+  const arrowFunctions = middleware.filter(isUnusedArrowFunction);
+  let sum = 0;
+  arrowFunctions.forEach((func)=> {
+    sum += func.options.padding;
+  })
+  return sum;
+}
+
+/**
+ *
+ * @param {Object} el
+ * @returns {boolean}
+ */
+function isUnusedArrowFunction(el) {
+  return el.name === "arrow" && el.options.element === null;
 }
