@@ -1,5 +1,6 @@
 import merge from 'deepmerge';
 import { Evented } from './evented.js';
+import { Shepherd } from './tour.js';
 import autoBind from './utils/auto-bind.js';
 import {
   isElement,
@@ -179,7 +180,7 @@ export class Step extends Evented {
    * Hide the step
    */
   hide() {
-    this.tour.modal.hide();
+    this.tour.modal?.hide();
 
     this.trigger('before-hide');
 
@@ -401,6 +402,10 @@ export class Step extends Evented {
 
     if (!this.tour.modal) {
       this.tour._setupModal();
+    }
+
+    if (Shepherd.activeTour !== this.tour) {
+      this.tour._setupActiveTour();
     }
 
     this.tour.modal.setupForStep(this);
