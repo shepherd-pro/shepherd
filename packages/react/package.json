@@ -1,0 +1,46 @@
+{
+  "name": "@shepherdpro/react",
+  "version": "0.0.3",
+  "private": false,
+  "main": "./dist/index.umd.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.umd.cjs"
+    },
+    "./package.json": "./package.json"
+  },
+  "type": "module",
+  "files": [
+    "dist",
+    "src"
+  ],
+  "scripts": {
+    "build": "vite build",
+    "test": "vitest --run",
+    "test:dev": "vitest"
+  },
+  "devDependencies": {
+    "@testing-library/jest-dom": "^6.2.0",
+    "@testing-library/react": "^14.1.2",
+    "@types/react": "^18.2.46",
+    "@vitejs/plugin-react": "^4.2.1",
+    "@vitest/ui": "^1.1.1",
+    "happy-dom": "^12.10.3",
+    "vite": "^5.0.10",
+    "vite-plugin-dts": "^3.7.1",
+    "vitest": "^1.1.1"
+  },
+  "dependencies": {
+    "@shepherdpro/pro-js": "workspace:^",
+    "shepherd.js": "^11.2.x"
+  },
+  "peerDependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "typescript": "^5.0.0"
+  }
+}
