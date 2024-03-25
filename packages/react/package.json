@@ -2,6 +2,7 @@
   "name": "@shepherdpro/react",
   "version": "0.0.3",
   "private": false,
+  "main": "./dist/index.umd.cjs",
   "module": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "exports": {
