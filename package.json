@@ -8,7 +8,7 @@
     "url": "git+https://github.com/shepherd-pro/shepherd.git"
   },
   "license": "MIT",
-  "maintainers": [
+  "authors": [
     "Robbie Wagner <rwwagner90@gmail.com>",
     "Chuck Carpenter <chuck@shipshape.io>"
   ],
@@ -62,9 +62,5 @@
   "packageManager": "pnpm@8.15.4",
   "engines": {
     "node": "18.* || >= 20"
-  },
-  "authors": [
-    "Adam Schwartz <adam.flynn.schwartz@gmail.com>",
-    "Zack Bloom <zackbloom@gmail.com>"
-  ]
+  }
 }
