@@ -27,8 +27,7 @@
     "build": "vite build",
     "prepack": "pnpm -F shepherd.js build && pnpm build",
     "test:ci": "vitest --run",
-    "test:dev": "vitest",
-    "release": "release-it"
+    "test:dev": "vitest"
   },
   "dependencies": {
     "@shepherdpro/pro-js": "workspace:*",
@@ -50,17 +49,5 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "typescript": "^5.0.0"
-  },
-  "release-it": {
-    "git": {
-      "requireUpstream": false
-    },
-    "hooks": {
-      "after:bump": "pnpm build",
-      "after:release": "pnpm pack"
-    },
-    "npm": {
-      "publish": false
-    }
   }
 }

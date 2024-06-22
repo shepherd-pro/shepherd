@@ -25,13 +25,3 @@ When reviewing merged PR's the labels to be used are:
 ## Release
 
 Once the prep work is completed, the actual release is straight forward: you just need to merge the open [Plan Release](https://github.com/shepherd-pro/shepherd/pulls?q=is%3Apr+is%3Aopen+%22Prepare+Release%22+in%3Atitle) PR
-
-## Manual Releases
-
-If you need to do something like an alpha or a specific version or something that release-plan is having trouble with, you can manually invoke `release-it` instead. You will still need to ensure all PRs are correctly labeled to get the correct changelog generation, but once that is done you can release by running:
-
-```
-pnpm release-it
-```
-
-It will then prompt you to choose the version, confirm the changelog, publish to npm and GitHub etc and handle all the aspects of release for you.

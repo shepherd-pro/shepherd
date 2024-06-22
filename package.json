@@ -31,8 +31,6 @@
   "devDependencies": {
     "@babel/core": "^7.24.6",
     "@babel/preset-env": "^7.24.3",
-    "@release-it-plugins/lerna-changelog": "^6.1.0",
-    "@release-it-plugins/workspaces": "^4.2.0",
     "@typescript-eslint/eslint-plugin": "^7.5.0",
     "@typescript-eslint/parser": "^7.5.0",
     "autoprefixer": "^10.4.19",
@@ -44,7 +42,6 @@
     "postcss": "^8.4.38",
     "prettier": "3.1.1",
     "prettier-plugin-svelte": "^3.2.2",
-    "release-it": "^17.3.0",
     "release-plan": "^0.9.0",
     "replace": "^1.2.2",
     "shepherd.js": "workspace:*",
@@ -54,34 +51,5 @@
   "packageManager": "pnpm@8.15.4",
   "engines": {
     "node": "18.* || >= 20"
-  },
-  "release-it": {
-    "hooks": {
-      "after:bump": "pnpm build"
-    },
-    "plugins": {
-      "@release-it-plugins/workspaces": {
-        "workspaces": [
-          "shepherd.js"
-        ]
-      },
-      "@release-it-plugins/lerna-changelog": {
-        "infile": "CHANGELOG.md"
-      }
-    },
-    "git": {
-      "tagName": "v${version}"
-    },
-    "github": {
-      "release": true,
-      "tokenRef": "GITHUB_AUTH",
-      "assets": [
-        "shepherd.js/dist/**/*.css",
-        "shepherd.js/dist/**/*.js",
-        "shepherd.js/dist/**/*.ts",
-        "shepherd.js/dist/**/*.map"
-      ]
-    },
-    "npm": false
   }
 }
