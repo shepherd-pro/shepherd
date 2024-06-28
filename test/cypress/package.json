@@ -30,7 +30,7 @@
     "eslint": "^8.56.0",
     "http-server": "^14.1.1",
     "postcss": "^8.4.38",
-    "prettier": "^3.1.1",
+    "prettier": "^3.3.2",
     "replace": "^1.2.2",
     "start-server-and-test": "^2.0.3",
     "typescript": "^5.4.5"

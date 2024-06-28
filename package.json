@@ -42,7 +42,7 @@
     "eslint-plugin-jest": "^28.5.0",
     "eslint-plugin-svelte": "^2.39.0",
     "postcss": "^8.4.38",
-    "prettier": "3.1.1",
+    "prettier": "3.3.2",
     "prettier-plugin-svelte": "^3.2.2",
     "release-it": "^17.3.0",
     "release-plan": "^0.9.0",
