@@ -17,7 +17,7 @@
   },
   "devDependencies": {
     "@babel/core": "^7.24.6",
-    "@babel/preset-env": "^7.24.3",
+    "@babel/preset-env": "^7.25.3",
     "@babel/preset-typescript": "^7.24.1",
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/svelte": "4.1.x",
