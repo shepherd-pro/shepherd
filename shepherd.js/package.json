@@ -54,7 +54,7 @@
   "dependencies": {
     "@floating-ui/dom": "^1.6.5",
     "@scarf/scarf": "^1.3.0",
-    "deepmerge-ts": "^5.1.0"
+    "deepmerge-ts": "^7.1.0"
   },
   "devDependencies": {
     "@arethetypeswrong/cli": "^0.15.3",
