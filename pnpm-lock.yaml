@@ -323,8 +323,8 @@ importers:
         specifier: ^4.2.12
         version: 4.2.18
       svelte-preprocess:
-        specifier: ^5.1.3
-        version: 5.1.4(@babel/core@7.24.9)(postcss-load-config@4.0.2(postcss@8.4.40))(postcss@8.4.40)(svelte@4.2.18)(typescript@5.5.4)
+        specifier: ^6.0.2
+        version: 6.0.2(@babel/core@7.24.9)(postcss-load-config@4.0.2(postcss@8.4.40))(postcss@8.4.40)(svelte@4.2.18)(typescript@5.5.4)
       svelte2tsx:
         specifier: ^0.7.8
         version: 0.7.13(svelte@4.2.18)(typescript@5.5.4)
@@ -2305,9 +2305,6 @@ packages:
   '@types/prop-types@15.7.12':
     resolution: {integrity: sha512-5zvhXYtRNRluoE/jAp4GVsSduVUzNWKkOZrCDBWYtE7biZywwdC2AcEzg+cSMLFRfVgeAFqpfNabiPjxFddV1Q==}
 
-  '@types/pug@2.0.10':
-    resolution: {integrity: sha512-Sk/uYFOBAB7mb74XcpizmH0KOR2Pv3D2Hmrh1Dmy5BmK3MpdSa5kqZcg6EKBdklU0bFXX9gCfzvpnyUehrPIuA==}
-
   '@types/react@18.3.3':
     resolution: {integrity: sha512-hti/R0pS0q1/xx+TsI73XIqk26eBsISZ2R0wUijXIngRK9R/e7Xw/cXVxQK7R5JjW+SV4zGcn5hXjudkN/pLIw==}
 
@@ -2823,10 +2820,6 @@ packages:
 
   buffer-crc32@0.2.13:
     resolution: {integrity: sha512-VO9Ht/+p3SN7SKWqcrgEzjGbRSJYTx+Q1pTQC0wrWqHx0vpJraQ6GtHx8tvcg1rlK1byhU5gccxgOgj7B0TDkQ==}
-
-  buffer-crc32@1.0.0:
-    resolution: {integrity: sha512-Db1SbgBS/fg/392AblrMJk97KggmvYhr4pB5ZIMTWtaivCPMWLkmb7m21cJvpvgK+J3nsU2CmmixNBZx4vFj/w==}
-    engines: {node: '>=8.0.0'}
 
   buffer-from@1.1.2:
     resolution: {integrity: sha512-E+XQCRwSbaaiChtv6k6Dwgc+bx+Bs6vuKJHHl5kox/BaKbhiXzqQOwK4cO22yElGp2OCmjwVhT3HmxgyPGnJfQ==}
@@ -3410,10 +3403,6 @@ packages:
     resolution: {integrity: sha512-0je+qPKHEMohvfRTCEo3CrPG6cAzAYgmzKyxRiYSSDkS6eGJdyVJm7WaYA5ECaAD9wLB2T4EEeymA5aFVcYXCA==}
     engines: {node: '>=6'}
 
-  detect-indent@6.1.0:
-    resolution: {integrity: sha512-reYkTUJAZb9gUuZ2RvVCNhVHdg62RHnJ7WJl8ftMi4diZ6NWlciOzQN88pUhSELEwflJht4oQDv0F0BMlwaYtA==}
-    engines: {node: '>=8'}
-
   detect-libc@2.0.3:
     resolution: {integrity: sha512-bwy0MGW55bG41VqxxypOsdSdGqLwXPI/focwgTYCFMbdUiBAxLg9CFzG08sz2aqzknwiX7Hkl0bQENjg8iLByw==}
     engines: {node: '>=8'}
@@ -3580,9 +3569,6 @@ packages:
 
   es-module-lexer@1.5.4:
     resolution: {integrity: sha512-MVNK56NiMrOwitFB7cqDwq0CQutbw+0BvLshJSse0MUNU+y1FC3bUS/AQg7oUng+/wKrrki7JfmwtVHkVfPLlw==}
-
-  es6-promise@3.3.1:
-    resolution: {integrity: sha512-SOp9Phqvqn7jtEUxPWdWfWoLmyt2VaJ6MpvP9Comy1MceMXqE6bxvaTu4iaxpYYPzhny28Lc+M87/c2cPK6lDg==}
 
   esbuild@0.21.5:
     resolution: {integrity: sha512-mg3OPMV4hXywwpoDxu3Qda5xCKQi+vCTZq8S9J/EpkhB2HzKXq4SNFZE3+NK93JYxc8VMSep+lOUSC/RVKaBqw==}
@@ -6569,11 +6555,6 @@ packages:
   rfdc@1.4.1:
     resolution: {integrity: sha512-q1b3N5QkRUWUl7iyylaaj3kOpIT0N2i9MqIEQXP73GVsN9cw3fdx8X63cEmWhJGi2PPCF23Ijp7ktmd39rawIA==}
 
-  rimraf@2.7.1:
-    resolution: {integrity: sha512-uWjbaKIK3T1OSVptzX7Nl6PvQ3qAGtKEtVRjRuazjfL3Bx5eI409VZSqgND+4UNnmzLVdPj9FqFJNPqBZFve4w==}
-    deprecated: Rimraf versions prior to v4 are no longer supported
-    hasBin: true
-
   rimraf@3.0.2:
     resolution: {integrity: sha512-JZkJMZkAGFFPP2YqXZXPbMlMBgsxzE8ILs4lMIX/2o0L9UBw9O/Y3o6wFw/i9YLapcUJWwqbi3kdxIPdC62TIA==}
     deprecated: Rimraf versions prior to v4 are no longer supported
@@ -6664,9 +6645,6 @@ packages:
 
   safer-buffer@2.1.2:
     resolution: {integrity: sha512-YZo3K82SD7Riyi0E1EQPojLz7kpepnSQI9IyPbHHg1XXXevb5dJI7tpyN2ADxGcQbHG7vcyRHk0cbwqcQriUtg==}
-
-  sander@0.5.1:
-    resolution: {integrity: sha512-3lVqBir7WuKDHGrKRDn/1Ye3kwpXaDOMsiRP1wd6wpZW56gJhsbp5RqQpA6JG/P+pkXizygnr1dKR8vzWaVsfA==}
 
   sax@1.4.1:
     resolution: {integrity: sha512-+aWOz7yVScEGoKNd4PA10LZ8sk0A/z5+nXQG5giUO5rprX9jgYsTdov9qCchZiPIZezbZH+jRut8nPodFAX4Jg==}
@@ -6800,10 +6778,6 @@ packages:
   socks@2.8.3:
     resolution: {integrity: sha512-l5x7VUUWbjVFbafGLxPWkYsHIhEvmF85tbIeFZWc8ZPtoMyybuEhL7Jye/ooC4/d48FgOjSJXgsF/AJPYCW8Zw==}
     engines: {node: '>= 10.0.0', npm: '>= 3.0.0'}
-
-  sorcery@0.11.1:
-    resolution: {integrity: sha512-o7npfeJE6wi6J9l0/5LKshFzZ2rMatRiCDwYeDQaOzqdzRJwALhX7mk/A/ecg6wjMu7wdZbmXfD2S/vpOg0bdQ==}
-    hasBin: true
 
   source-map-js@1.2.0:
     resolution: {integrity: sha512-itJW8lvSA0TXEphiRoawsCksnlf8SyvmFzIhltqAHluXd88pkCd+cXJVHTDwdCr0IzwptSm035IHQktUu1QUMg==}
@@ -7066,21 +7040,21 @@ packages:
       jest: '>= 27'
       svelte: '>= 3'
 
-  svelte-preprocess@5.1.4:
-    resolution: {integrity: sha512-IvnbQ6D6Ao3Gg6ftiM5tdbR6aAETwjhHV+UKGf5bHGYR69RQvF1ho0JKPcbUON4vy4R7zom13jPjgdOWCQ5hDA==}
-    engines: {node: '>= 16.0.0'}
+  svelte-preprocess@6.0.2:
+    resolution: {integrity: sha512-OvDTLfaOkkhjprbDKO0SOCkjNYuHy16dbD4SpqbIi6QiabOMHxRT4km5/dzbFFkmW1L0E2INF3MFltG2pgOyKQ==}
+    engines: {node: '>= 18.0.0'}
     peerDependencies:
       '@babel/core': ^7.10.2
       coffeescript: ^2.5.1
       less: ^3.11.3 || ^4.0.0
       postcss: ^7 || ^8
-      postcss-load-config: ^2.1.0 || ^3.0.0 || ^4.0.0 || ^5.0.0
+      postcss-load-config: '>=3'
       pug: ^3.0.0
       sass: ^1.26.8
-      stylus: ^0.55.0
+      stylus: '>=0.55'
       sugarss: ^2.0.0 || ^3.0.0 || ^4.0.0
-      svelte: ^3.23.0 || ^4.0.0-next.0 || ^4.0.0 || ^5.0.0-next.0
-      typescript: '>=3.9.5 || ^4.0.0 || ^5.0.0'
+      svelte: ^4.0.0 || ^5.0.0-next.100 || ^5.0.0
+      typescript: ^5.0.0
     peerDependenciesMeta:
       '@babel/core':
         optional: true
@@ -10227,8 +10201,6 @@ snapshots:
 
   '@types/prop-types@15.7.12': {}
 
-  '@types/pug@2.0.10': {}
-
   '@types/react@18.3.3':
     dependencies:
       '@types/prop-types': 15.7.12
@@ -11008,8 +10980,6 @@ snapshots:
 
   buffer-crc32@0.2.13: {}
 
-  buffer-crc32@1.0.0: {}
-
   buffer-from@1.1.2: {}
 
   buffer@5.7.1:
@@ -11716,8 +11686,6 @@ snapshots:
 
   dequal@2.0.3: {}
 
-  detect-indent@6.1.0: {}
-
   detect-libc@2.0.3: {}
 
   detect-newline@3.1.0: {}
@@ -11876,8 +11844,6 @@ snapshots:
       stop-iteration-iterator: 1.0.0
 
   es-module-lexer@1.5.4: {}
-
-  es6-promise@3.3.1: {}
 
   esbuild@0.21.5:
     optionalDependencies:
@@ -15713,10 +15679,6 @@ snapshots:
 
   rfdc@1.4.1: {}
 
-  rimraf@2.7.1:
-    dependencies:
-      glob: 7.2.3
-
   rimraf@3.0.2:
     dependencies:
       glob: 7.2.3
@@ -15870,13 +15832,6 @@ snapshots:
   safe-identifier@0.4.2: {}
 
   safer-buffer@2.1.2: {}
-
-  sander@0.5.1:
-    dependencies:
-      es6-promise: 3.3.1
-      graceful-fs: 4.2.11
-      mkdirp: 0.5.6
-      rimraf: 2.7.1
 
   sax@1.4.1: {}
 
@@ -16049,13 +16004,6 @@ snapshots:
     dependencies:
       ip-address: 9.0.5
       smart-buffer: 4.2.0
-
-  sorcery@0.11.1:
-    dependencies:
-      '@jridgewell/sourcemap-codec': 1.5.0
-      buffer-crc32: 1.0.0
-      minimist: 1.2.8
-      sander: 0.5.1
 
   source-map-js@1.2.0: {}
 
@@ -16320,13 +16268,8 @@ snapshots:
       jest: 29.7.0(@types/node@20.14.12)
       svelte: 4.2.18
 
-  svelte-preprocess@5.1.4(@babel/core@7.24.9)(postcss-load-config@4.0.2(postcss@8.4.40))(postcss@8.4.40)(svelte@4.2.18)(typescript@5.5.4):
+  svelte-preprocess@6.0.2(@babel/core@7.24.9)(postcss-load-config@4.0.2(postcss@8.4.40))(postcss@8.4.40)(svelte@4.2.18)(typescript@5.5.4):
     dependencies:
-      '@types/pug': 2.0.10
-      detect-indent: 6.1.0
-      magic-string: 0.30.10
-      sorcery: 0.11.1
-      strip-indent: 3.0.0
       svelte: 4.2.18
     optionalDependencies:
       '@babel/core': 7.24.9
