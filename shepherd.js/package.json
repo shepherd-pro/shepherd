@@ -60,7 +60,7 @@
     "@arethetypeswrong/cli": "^0.15.3",
     "@babel/core": "^7.24.6",
     "@babel/plugin-transform-typescript": "^7.24.5",
-    "@babel/preset-env": "^7.24.4",
+    "@babel/preset-env": "^7.25.3",
     "@babel/preset-typescript": "^7.24.1",
     "@rollup/plugin-babel": "^6.0.4",
     "@rollup/plugin-node-resolve": "^15.2.3",
