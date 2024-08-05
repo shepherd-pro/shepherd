@@ -20,7 +20,7 @@
     "starlight-typedoc": "^0.13.1",
     "tailwindcss": "^3.4.3",
     "typedoc": "^0.26.4",
-    "typedoc-plugin-markdown": "4.2.1",
+    "typedoc-plugin-markdown": "4.2.3",
     "typescript": "^5.5.3"
   },
   "devDependencies": {
