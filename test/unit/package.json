@@ -40,7 +40,7 @@
     "shepherd.js": "workspace:*",
     "start-server-and-test": "^2.0.3",
     "svelte": "^4.2.12",
-    "svelte-jester": "^3.0.0",
+    "svelte-jester": "^5.0.0",
     "typescript": "^5.4.5"
   },
   "packageManager": "pnpm@9.2.0",

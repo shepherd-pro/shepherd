@@ -456,8 +456,8 @@ importers:
         specifier: ^4.2.12
         version: 4.2.18
       svelte-jester:
-        specifier: ^3.0.0
-        version: 3.0.0(jest@29.7.0(@types/node@20.14.12))(svelte@4.2.18)
+        specifier: ^5.0.0
+        version: 5.0.0(jest@29.7.0(@types/node@20.14.12))(svelte@4.2.18)
       typescript:
         specifier: ^5.4.5
         version: 5.5.4
@@ -7326,9 +7326,9 @@ packages:
       svelte:
         optional: true
 
-  svelte-jester@3.0.0:
-    resolution: {integrity: sha512-V279cL906++hn00hkL1xAr/y5OjjxPYWic1g0yTJFmqdbdWKthdcuP3XBvmmwP9AzFBT51DlPgXz56HItle1Ug==}
-    engines: {node: '>=16', pnpm: ^8.0.0}
+  svelte-jester@5.0.0:
+    resolution: {integrity: sha512-12UnqprvUClFZHmx8O9exOK5ncHdESMIVG7FM9wRCEBzHbtigsklwKB+Q3AyKPsCrrOS920f9ZbYFk4PO0sEnQ==}
+    engines: {node: '>=18', pnpm: ^8.0.0}
     peerDependencies:
       jest: '>= 27'
       svelte: '>= 3'
@@ -17066,7 +17066,7 @@ snapshots:
     optionalDependencies:
       svelte: 4.2.18
 
-  svelte-jester@3.0.0(jest@29.7.0(@types/node@20.14.12))(svelte@4.2.18):
+  svelte-jester@5.0.0(jest@29.7.0(@types/node@20.14.12))(svelte@4.2.18):
     dependencies:
       jest: 29.7.0(@types/node@20.14.12)
       svelte: 4.2.18
