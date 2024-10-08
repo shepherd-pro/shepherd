@@ -33,7 +33,7 @@
     "shepherd.js": "workspace:*"
   },
   "devDependencies": {
-    "@testing-library/jest-dom": "^6.2.0",
+    "@testing-library/jest-dom": "^6.5.0",
     "@testing-library/react": "^16.0.0",
     "@types/react": "^18.3.3",
     "@vitejs/plugin-react": "^4.2.1",

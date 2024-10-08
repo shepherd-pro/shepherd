@@ -19,7 +19,7 @@
     "@babel/core": "^7.24.6",
     "@babel/preset-env": "^7.25.3",
     "@babel/preset-typescript": "^7.24.1",
-    "@testing-library/jest-dom": "^5.17.0",
+    "@testing-library/jest-dom": "^6.5.0",
     "@testing-library/svelte": "4.1.x",
     "autoprefixer": "^10.4.19",
     "babel-jest": "^29.7.0",
