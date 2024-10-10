@@ -87,7 +87,7 @@
     "rollup-plugin-visualizer": "^5.11.0",
     "svelte": "^4.2.19",
     "svelte-preprocess": "^6.0.3",
-    "svelte2tsx": "^0.7.8",
+    "svelte2tsx": "^0.7.21",
     "typescript": "^5.4.5"
   },
   "packageManager": "pnpm@9.2.0",
