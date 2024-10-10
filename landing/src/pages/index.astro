@@ -15,20 +15,20 @@ import MainPage from '@layouts/MainPage.astro';
     />
   </div>
 
-  <div slot='content'>
-    <div class='hero-including mt-8' id='hero-including'>
-      <h3 class='demo-heading font-heading text-2xl uppercase'>
+  <div slot="content">
+    <div class="hero-including mt-8" id="hero-including">
+      <h3 class="demo-heading font-heading text-2xl uppercase">
         01. How to Include
       </h3>
-      <div class='hero-example-code text-left'>
+      <div class="hero-example-code text-left">
         <Code
           code={`
 	<link rel="stylesheet" href="shepherd.js/dist/css/shepherd.css"/>
 	<script type="module" src="shepherd.js/dist/shepherd.mjs"></script>
   
 `}
-          lang='js'
-          theme='nord'
+          lang="js"
+          theme="nord"
           wrap
         />
       </div>
@@ -141,6 +141,31 @@ import MainPage from '@layouts/MainPage.astro';
               }
             ],
             id: 'welcome'
+          },
+          {
+            title: 'Features',
+            text: 'Shepherd has many built-in features to guide users through your app. You can easily customize the look and feel of your tour by adding your own styles. Also, you can highlight multiple elements at once to draw attention to key areas of your application.',
+            attachTo: {
+              element: '.customizable',
+              on: 'bottom'
+            },
+            extraHighlights: ['.feature'],
+            buttons: [
+              {
+                action() {
+                  return this.back();
+                },
+                secondary: true,
+                text: 'Back'
+              },
+              {
+                action() {
+                  return this.next();
+                },
+                text: 'Next'
+              }
+            ],
+            id: 'features'
           },
           {
             title: 'Including',

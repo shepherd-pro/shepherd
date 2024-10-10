@@ -388,6 +388,110 @@ describe('components/ShepherdModal', () => {
 
       modalComponent.$destroy();
     });
+
+    it('sets the correct attributes with extraHighlights', async () => {
+      const modalComponent = new ShepherdModal({
+        target: document.body,
+        props: {
+          classPrefix
+        }
+      });
+
+      await modalComponent.positionModal(
+        0,
+        0,
+        0,
+        0,
+        null,
+        {
+          getBoundingClientRect() {
+            return {
+              height: 250,
+              x: 20,
+              y: 20,
+              width: 500
+            };
+          }
+        },
+        [
+          {
+            getBoundingClientRect() {
+              return {
+                height: 100,
+                x: 50,
+                y: 50,
+                width: 100
+              };
+            }
+          }
+        ]
+      );
+
+      const modalPath = modalComponent.getElement().querySelector('path');
+      expect(modalPath).toHaveAttribute(
+        'd',
+        'M1024,768H0V0H1024V768ZM20,20a0,0,0,0,0-0,0V270a0,0,0,0,0,0,0H520a0,0,0,0,0,0-0V20a0,0,0,0,0-0-0ZM50,50a0,0,0,0,0-0,0V150a0,0,0,0,0,0,0H150a0,0,0,0,0,0-0V50a0,0,0,0,0-0-0Z'
+      );
+
+      modalComponent.$destroy();
+    });
+
+    it('sets the correct attributes with multiple extraHighlights', async () => {
+      const modalComponent = new ShepherdModal({
+        target: document.body,
+        props: {
+          classPrefix
+        }
+      });
+
+      await modalComponent.positionModal(
+        0,
+        0,
+        0,
+        0,
+        null,
+        {
+          getBoundingClientRect() {
+            return {
+              height: 250,
+              x: 20,
+              y: 20,
+              width: 500
+            };
+          }
+        },
+        [
+          {
+            getBoundingClientRect() {
+              return {
+                height: 100,
+                x: 50,
+                y: 50,
+                width: 100
+              };
+            }
+          },
+          {
+            getBoundingClientRect() {
+              return {
+                height: 50,
+                x: 200,
+                y: 200,
+                width: 50
+              };
+            }
+          }
+        ]
+      );
+
+      const modalPath = modalComponent.getElement().querySelector('path');
+      expect(modalPath).toHaveAttribute(
+        'd',
+        'M1024,768H0V0H1024V768ZM20,20a0,0,0,0,0-0,0V270a0,0,0,0,0,0,0H520a0,0,0,0,0,0-0V20a0,0,0,0,0-0-0ZM50,50a0,0,0,0,0-0,0V150a0,0,0,0,0,0,0H150a0,0,0,0,0,0-0V50a0,0,0,0,0-0-0ZM200,200a0,0,0,0,0-0,0V250a0,0,0,0,0,0,0H250a0,0,0,0,0,0-0V200a0,0,0,0,0-0-0Z'
+      );
+
+      modalComponent.$destroy();
+    });
   });
 
   describe('setupForStep()', function () {

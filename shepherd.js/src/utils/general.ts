@@ -63,6 +63,18 @@ export function parseAttachTo(step: Step) {
   return returnOpts;
 }
 
+/*
+ * Resolves the step's `extraHighlights` option, converting any locator values to HTMLElements.
+ */
+export function parseExtraHighlights(step: Step): HTMLElement[] {
+  if (step.options.extraHighlights) {
+    return step.options.extraHighlights.flatMap((highlight) => {
+      return Array.from(document.querySelectorAll(highlight)) as HTMLElement[];
+    });
+  }
+  return [];
+}
+
 /**
  * Checks if the step should be centered or not. Does not trigger attachTo.element evaluation, making it a pure
  * alternative for the deprecated step.isCentered() method.

@@ -12,24 +12,24 @@ starting the tour, then `bodyScrollLock.clearAllBodyScrollLocks();` after stoppi
 
 ### Highlighting multiple elements
 
-The most obvious use case for this, is around a group of elements, or more specifically the column in a TABLE. This can be achieved using CSS to absolutely position the element and give it the width and height you need. e.g.,
+Highlighting multiple elements is supported by Shepherd out of the box. You can pass an array of selectors to the `extraHighlights` option in the step configuration. This will highlight all the elements in the array as well as the target element defined in the `attachTo` option.
 
-```html
-<colgroup class="shepherd-step-highlight"></colgroup>
+```javascript
+const tour = new Shepherd.Tour({
+  steps: [
+    {
+      text: 'This is a step with multiple highlights',
+      attachTo: {
+        element: '.target-element',
+        on: 'bottom'
+      },
+      extraHighlights: ['.example-selector', '.example-selector-2']
+    }
+  ]
+});
 ```
 
-and setting your CSS to something like:
-
-```css
-colgroup.shepherd-step-highlight {
-  display: block;
-  height: 100px;
-  position: absolute;
-  width: 200px;
-}
-```
-
-Similar results could be had by adding elements purely for the purpose of exposing more than one element in the overlay and positioning the element absolutely.
+If an element to be highlighted is contained by another element that is also being highlighted, the contained element will not be highlighted. This is to prevent the contained element from being obscured by the containing element.
 
 ### Offsets
 

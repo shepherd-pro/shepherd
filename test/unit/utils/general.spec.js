@@ -2,7 +2,8 @@ import { jest } from '@jest/globals';
 import { Step } from '../../../shepherd.js/src/step';
 import {
   parseAttachTo,
-  shouldCenterStep
+  shouldCenterStep,
+  parseExtraHighlights
 } from '../../../shepherd.js//src/utils/general';
 import { getFloatingUIOptions } from '../../../shepherd.js/src/utils/floating-ui';
 
@@ -72,6 +73,36 @@ describe('General Utils', function () {
       );
 
       parseAttachTo(step);
+    });
+  });
+
+  describe('parseExtraHighlights()', function () {
+    it('returns empty array if extraHighlights is not defined', function () {
+      const step = new Step({}, {});
+
+      const highlights = parseExtraHighlights(step);
+      expect(highlights).toEqual([]);
+    });
+
+    it('returns empty array if extraHighlights is an empty array', function () {
+      const step = new Step({}, { extraHighlights: [] });
+
+      const highlights = parseExtraHighlights(step);
+      expect(highlights).toEqual([]);
+    });
+
+    it('resolves extraHighlights selectors to HTMLElements', function () {
+      const step = new Step({}, { extraHighlights: ['.options-test'] });
+
+      const highlights = parseExtraHighlights(step);
+      expect(highlights).toEqual([optionsElement]);
+    });
+
+    it('returns empty array if no elements match the extraHighlights selectors', function () {
+      const step = new Step({}, { extraHighlights: ['.non-existent-class'] });
+
+      const highlights = parseExtraHighlights(step);
+      expect(highlights).toEqual([]);
     });
   });
 

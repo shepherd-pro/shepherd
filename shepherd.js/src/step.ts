@@ -8,7 +8,12 @@ import {
   isUndefined
 } from './utils/type-check.ts';
 import { bindAdvance } from './utils/bind.ts';
-import { parseAttachTo, normalizePrefix, uuid } from './utils/general.ts';
+import {
+  parseAttachTo,
+  normalizePrefix,
+  uuid,
+  parseExtraHighlights
+} from './utils/general.ts';
 import {
   setupTooltip,
   destroyTooltip,
@@ -184,6 +189,18 @@ export interface StepOptions {
    * ```
    */
   when?: StepOptionsWhen;
+
+  /**
+   * An array of extra element selectors to highlight when the overlay is shown
+   * The tooltip won't be fixed to these elements, but they will be highlighted
+   * just like the `attachTo` element.
+   * ```js
+   * const step = new Step(tour, {
+   *   extraHighlights: [ '.pricing', '#docs' ],
+   *   ...moreOptions
+   * });
+   */
+  extraHighlights?: ReadonlyArray<string>;
 }
 
 export type PopperPlacement =
@@ -274,6 +291,7 @@ export interface StepOptionsWhen {
  */
 export class Step extends Evented {
   _resolvedAttachTo: StepOptionsAttachTo | null;
+  _resolvedExtraHighlightElements?: HTMLElement[];
   classPrefix?: string;
   // eslint-disable-next-line @typescript-eslint/ban-types
   declare cleanup: Function | null;
@@ -366,6 +384,15 @@ export class Step extends Evented {
     this._updateStepTargetOnHide();
 
     this.trigger('hide');
+  }
+
+  /**
+   * Resolves attachTo options.
+   * @returns {{}|{element, on}}
+   */
+  _resolveExtraHiglightElements() {
+    this._resolvedExtraHighlightElements = parseExtraHighlights(this);
+    return this._resolvedExtraHighlightElements;
   }
 
   /**
@@ -575,6 +602,7 @@ export class Step extends Evented {
 
     // Force resolve to make sure the options are updated on subsequent shows.
     this._resolveAttachToOptions();
+    this._resolveExtraHiglightElements();
     this._setupElements();
 
     if (!this.tour.modal) {
@@ -604,9 +632,16 @@ export class Step extends Evented {
     // @ts-expect-error TODO: get types for Svelte components
     const content = this.shepherdElementComponent.getElement();
     const target = this.target || document.body;
+    const extraHighlightElements = this._resolvedExtraHighlightElements;
+
     target.classList.add(`${this.classPrefix}shepherd-enabled`);
     target.classList.add(`${this.classPrefix}shepherd-target`);
     content.classList.add('shepherd-enabled');
+
+    extraHighlightElements?.forEach((el) => {
+      el.classList.add(`${this.classPrefix}shepherd-enabled`);
+      el.classList.add(`${this.classPrefix}shepherd-target`);
+    });
 
     this.trigger('show');
   }
@@ -620,19 +655,28 @@ export class Step extends Evented {
    */
   _styleTargetElementForStep(step: Step) {
     const targetElement = step.target;
+    const extraHighlightElements = step._resolvedExtraHighlightElements;
 
     if (!targetElement) {
       return;
     }
 
-    if (step.options.highlightClass) {
-      targetElement.classList.add(step.options.highlightClass);
+    const highlightClass = step.options.highlightClass;
+    if (highlightClass) {
+      targetElement.classList.add(highlightClass);
+      extraHighlightElements?.forEach((el) => el.classList.add(highlightClass));
     }
 
     targetElement.classList.remove('shepherd-target-click-disabled');
+    extraHighlightElements?.forEach((el) =>
+      el.classList.remove('shepherd-target-click-disabled')
+    );
 
     if (step.options.canClickTarget === false) {
       targetElement.classList.add('shepherd-target-click-disabled');
+      extraHighlightElements?.forEach((el) =>
+        el.classList.add('shepherd-target-click-disabled')
+      );
     }
   }
 
@@ -643,9 +687,14 @@ export class Step extends Evented {
    */
   _updateStepTargetOnHide() {
     const target = this.target || document.body;
+    const extraHighlightElements = this._resolvedExtraHighlightElements;
 
-    if (this.options.highlightClass) {
-      target.classList.remove(this.options.highlightClass);
+    const highlightClass = this.options.highlightClass;
+    if (highlightClass) {
+      target.classList.remove(highlightClass);
+      extraHighlightElements?.forEach((el) =>
+        el.classList.remove(highlightClass)
+      );
     }
 
     target.classList.remove(
@@ -653,5 +702,12 @@ export class Step extends Evented {
       `${this.classPrefix}shepherd-enabled`,
       `${this.classPrefix}shepherd-target`
     );
+    extraHighlightElements?.forEach((el) => {
+      el.classList.remove(
+        'shepherd-target-click-disabled',
+        `${this.classPrefix}shepherd-enabled`,
+        `${this.classPrefix}shepherd-target`
+      );
+    });
   }
 }
